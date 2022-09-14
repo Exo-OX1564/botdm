@@ -19,6 +19,7 @@ with open("./config.json", "r") as file:
   embedFootericonURL = config['embedFootericonURL']
   embedImageURL = config['embedImageURL']
   embedThumbnailURL = config['embedThumbnailURL']
+  botToken = config['token']
   
 
 #Turn to cog?
@@ -124,4 +125,7 @@ async def on_message(message):
 
 
 if __name__ == '__main__':
-  client.run('')
+  try:
+    client.run(botToken)
+  except Exception as exc:
+    logging.error(f'[INVALID] Token Provided Is Invalid: {exc}')
