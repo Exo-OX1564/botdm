@@ -1,16 +1,21 @@
 import discord, os, asyncio, logging, sys, json
 from discord.ext import commands, tasks
 
+#For unverified Bots.
+intents = discord.Intents.all()
+client = commands.Bot(command_prefix = "!", intents = intents)
+
+"""
+#For verified bots
 _i = discord.Intents.default()
 _i.members = True
 #Only enable the bottom intent if you have it available. 
 #_i.presence = True
-client = commands.Bot(command_prefix=commands.when_mentioned, intents = _i, shard_count = 1) #Set your shard count here (if your bot is in 1k servers, its 1 shard, if it's in 5k servers, shard count is 5 and so on.)
+client = commands.Bot(command_prefix=commands.when_mentioned, intents = ) 
+#client = commands.AutoShardedBot(command_prefix = commands.when_mentioned, intents = _i, shard_count = 1)
+#Only enable above and remove already existing client if your bot needs sharding, and then add the appropriate shard count needed. 3k servers = 3 shards, 4k servers = 4 shards, etc.
+"""
 
-
-#Below in tags are for unverified bots
-#intents = discord.Intents.all()
-#client = commands.Bot(command_prefix = "!", intents = intents)
 
 #Ignore this, just console logging and config stuff.
 with open("./config.json", "r") as file:
